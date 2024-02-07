@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { ZodNumber, z } from "zod";
 
 export const designTypes = ["Screen Print", "Embroidery"] as const;
 export const designTypeSchema = z.enum(designTypes);
@@ -17,6 +17,17 @@ const designTagSchema = z.object({
   name: z.string(),
 });
 
+const imageSchema = z.object({
+  id: z.number(),
+  url: z.string(),
+});
+
+const colorSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  hexCode: z.string(),
+});
+
 export const dateStringSchema = z.date().catch(new Date(0));
 
 export const designSchema = z.object({
@@ -32,6 +43,8 @@ export const designSchema = z.object({
   }),
   designSubcategories: z.array(designSubcategorySchema),
   designTags: z.array(designTagSchema),
+  image: imageSchema,
+  defaultBackgroundColor: colorSchema,
 });
 
 export type Design = z.infer<typeof designSchema>;

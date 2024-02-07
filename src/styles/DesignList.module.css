@@ -5,6 +5,12 @@
 }
 
 .design-container {
-  padding: 20px;
+  padding: 10px;
   background-color: lightgray;
+  display: flex;
+  align-items: center;
+}
+
+.design-container img {
+  width: 80px;
 }

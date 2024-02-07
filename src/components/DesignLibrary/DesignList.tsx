@@ -33,7 +33,8 @@ export function DesignList() {
         designs.map((design) => (
           <Link to={`${design.designNumber}`}>
             <div className={styles["design-container"]}>
-              #{design.designNumber}
+              <img src={design.image.url} alt="" />
+              <div>#{design.designNumber}</div>
             </div>
           </Link>
         ))}
