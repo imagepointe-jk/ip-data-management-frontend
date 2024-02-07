@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Design } from "../dbSchema";
-import { fetchDesigns } from "../fetch";
-import { parseDesigns } from "../validations";
-import styles from "../styles/DesignList.module.css";
+import { Design } from "../../dbSchema";
+import { fetchDesigns } from "../../fetch";
+import { parseDesigns } from "../../validations";
+import styles from "../../styles/DesignList.module.css";
+import { Link } from "react-router-dom";
 
 export function DesignList() {
   const [designs, setDesigns] = useState(null as Design[] | null);
@@ -30,9 +31,11 @@ export function DesignList() {
     <div className={styles["main"]}>
       {designs &&
         designs.map((design) => (
-          <div className={styles["design-container"]}>
-            #{design.designNumber}
-          </div>
+          <Link to={`${design.designNumber}`}>
+            <div className={styles["design-container"]}>
+              #{design.designNumber}
+            </div>
+          </Link>
         ))}
     </div>
   );
