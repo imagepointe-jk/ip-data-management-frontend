@@ -33,8 +33,8 @@ export const dateStringSchema = z.date().catch(new Date(0));
 export const designSchema = z.object({
   id: z.number(),
   designNumber: z.number(),
-  name: z.string().optional(),
-  description: z.string().optional(),
+  name: z.string().nullable(),
+  description: z.string().nullable(),
   featured: z.boolean(),
   date: dateStringSchema,
   status: resourceStatusSchema,
